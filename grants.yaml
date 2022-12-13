@@ -9,9 +9,7 @@ spec:
   description: "Grant access to kubernetes with Infra. Also search for users, roles, and groups."
   platforms: 
   - selector:
-      matchExpressions:
-      - key: "os"
-        operator: "In"
-        values:
-        - darwin
+      matchLabels:
+        os: darwin
+        arch: arm64
     uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac
