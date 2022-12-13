@@ -19,14 +19,20 @@ jobs:
       - uses: cb80/delrel@latest
         with:
           tag: latest
-      - name: compile
+      - name: compile m1
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1-mac.zip kubectl-infra 
+      - name: compile x86 mac
+        run: |    
           deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-x86-mac.zip kubectl-infra
+      - name: compile linux
+        run: |
           deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-linux.zip kubectl-infra
+      - name: compile windows
+        run: |
           deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
           zip kubectl-infra-windows.zip kubectl-infra.exe
       - uses: ncipollo/release-action@v1
