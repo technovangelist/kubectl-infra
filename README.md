@@ -1,1 +1,1 @@
-attempt at a krew plugin
+attempt at a krew plugin.
