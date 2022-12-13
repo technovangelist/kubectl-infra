@@ -36,7 +36,7 @@ jobs:
           deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
           zip kubectl-infra-windows.zip kubectl-infra.exe
       - name: krew release bot
-        uses: https://github.com/rajatjindal/krew-release-bot
+        uses: rajatjindal/krew-release-bot@v0.0.38
       - uses: ncipollo/release-action@v1
         with:
           removeArtifacts: true
