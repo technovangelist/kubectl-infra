@@ -22,7 +22,7 @@ jobs:
       - name: compile m1
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
-          zip kubectl-infra-m1-mac.zip kubectl-infra 
+          zip kubectl-infra-m1mac.zip kubectl-infra 
       - name: compile x86 mac
         run: |    
           deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
