@@ -1,0 +1,33 @@
+name: build
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+
+      - uses: cb80/delrel@latest
+        with:
+          tag: latest
+      - name: compile
+        run: |
+          deno compile --target aarch64-apple-darwin --output kubectl-infra-m1mac --allow-read --allow-write --allow-net mod.ts 
+          deno compile --target x86_64-apple-darwin --output kubectl-infra-x86mac --allow-read --allow-write --allow-net mod.ts 
+          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra-linux --allow-read --allow-write --allow-net mod.ts 
+          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra-windows --allow-read --allow-write --allow-net mod.ts
+      - uses: ncipollo/release-action@v1
+        with:
+          removeArtifacts: true
+          artifacts: "kubectl-infra-m1mac,kubectl-infra-x86mac,kubectl-infra-linux,kubectl-infra-windows.exe"
+          tag: "latest"
+          bodyFile: "README.md"
