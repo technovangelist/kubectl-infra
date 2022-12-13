@@ -21,10 +21,14 @@ jobs:
           tag: latest
       - name: compile
         run: |
-          deno compile --target aarch64-apple-darwin --output kubectl-infra-m1mac --allow-read --allow-write --allow-net mod.ts 
-          deno compile --target x86_64-apple-darwin --output kubectl-infra-x86mac --allow-read --allow-write --allow-net mod.ts 
-          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra-linux --allow-read --allow-write --allow-net mod.ts 
-          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra-windows --allow-read --allow-write --allow-net mod.ts
+          deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
+          zip kubectl-infra-m1-mac.zip kubectl-infra 
+          deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
+          zip kubectl-infra-x86-mac.zip kubectl-infra
+          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
+          zip kubectl-infra-linux.zip kubectl-infra
+          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          zip kubectl-infra-windows.zip kubectl-infra.exe
       - uses: ncipollo/release-action@v1
         with:
           removeArtifacts: true
