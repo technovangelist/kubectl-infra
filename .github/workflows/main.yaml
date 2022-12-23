@@ -21,10 +21,11 @@ jobs:
       # - uses: cb80/delrel@latest
       #   with:
       #     tag: version
-      - name: compile m1
+      - name: compile-m1
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
+          echo HASH=$(sha256sum kubectl-infra-m1mac.zip)
       # - name: compile x86 mac
       #   run: |
       #     deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
@@ -37,11 +38,13 @@ jobs:
       #   run: |
       #     deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
       #     zip kubectl-infra-windows.zip kubectl-infra.exe
-      - name: Generate Release Hashes
-        uses: MCJack123/ghaction-Generate-Release-Hashes@v4
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
         with:
-          hash-type: sha1
-          file-name: hashes.txt
+          valueFile: 'krew.yaml'
+          propertyPath: '$.spec.platforms[0].sha256'
+          value: steps.compile1.outputs.hash
+          commitChange: true
 
 
       # - name: krew release bot

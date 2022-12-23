@@ -1,0 +1,35 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata: 
+  name: grants
+spec:
+  version: "v0.0.1"
+  homepage: https://GitHub.com/technovangelist/kubectl-infra
+  shortDescription: "Grant access to k8s"
+  description: "Grant access to kubernetes with Infra. Also search for users, roles, and groups."
+  platforms: 
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+    uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-m1mac.zip
+    sha256: xxx
+    bin: kubectl-infra
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac.zip
+    bin: kubectl-infra
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-linux.zip
+    bin: kubectl-infra
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-windows.zip
+    bin: kubectl-infra.exe
