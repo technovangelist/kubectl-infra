@@ -21,7 +21,7 @@ jobs:
       - name: Compile for Mac M1
         id: compilem1
         run: |
-          rm kubectl-infra-m1mac.zip
+          # rm kubectl-infra-m1mac.zip
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-run --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
@@ -51,8 +51,8 @@ jobs:
         id: releaseaction
         with:
           removeArtifacts: true
-          # artifacts: "kubectl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
-          artifacts: "kubectl-infra-m1mac.zip"
+          artifacts: "kubecstl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
+          # artifacts: "kubectl-infra-m1mac.zip"
           bodyFile: "README.md"
 
       - name: Update values.yaml
