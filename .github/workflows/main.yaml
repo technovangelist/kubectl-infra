@@ -41,13 +41,12 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'krew.yaml'
-          propertyPath: '$.spec.platforms[0].sha256'
+          valueFile: "krew.yaml"
+          propertyPath: "$.spec.platforms[0].sha256"
           value: steps.compile-m1.outputs.hash
           createPR: true
           token: ${{ secrets.GITHUB_TOKEN }}
-
-
+          masterBranchName: main
 
       # - name: krew release bot
       #   uses: rajatjindal/krew-release-bot@v0.0.43
