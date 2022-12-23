@@ -3,7 +3,7 @@ kind: Plugin
 metadata:
   name: grants
 spec:
-  version: v0.0.1
+  version: v0.2.55
   homepage: https://GitHub.com/technovangelist/kubectl-infra
   shortDescription: Grant access to k8s
   description: Grant access to kubernetes with Infra.. Also search for users, roles, and groups.
@@ -12,27 +12,27 @@ spec:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-m1mac.zip
-      sha256: c56f5837d0b1d0ba570680d48af92cd13c91935e7316fd5a283367db196386a5  kubectl-infra-m1mac.zip
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.55/kubectl-infra-m1mac.zip
+      sha256: 1411f89cc9660a210d83779022e3b91ea0e193c57eb5ca17c1143840a429c785
       bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: darwin
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac.zip
-      sha256: xxxttashtasht
+    - selector: null
+      matchLabels:
+        os: darwin
+        arch: amd64
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.55/kubectl-infra-x86mac.zip
+      sha256: 21ed3b132f715d6b52ee474e7e16948e4471947991dc6a2c3fd6ac57e438fa5e
       bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: linux
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-linux.zip
-      sha256: xxx
+    - selector: null
+      matchLabels:
+        os: linux
+        arch: amd64
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.55/kubectl-infra-linux.zip
+      sha256: 614369571b3b0c7c3d41248784f4fbe33d0041e644dc699d72288c93474af9cb
       bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: windows
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-windows.zip
-      sha256: xxx
+    - selector: null
+      matchLabels:
+        os: windows
+        arch: amd64
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.55/kubectl-infra-windows.zip
+      sha256: 245a339f1b0b82174edbcd70243d9a88825ee70cf9909df8f73cb2267c37e700
       bin: kubectl-infra.exe
