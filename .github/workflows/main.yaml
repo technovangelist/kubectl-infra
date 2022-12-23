@@ -24,9 +24,6 @@ jobs:
           rm kubectl-infra-m1mac.zip
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
-      - name: Generate checksum for M1
-        id: checksumm1
-        run: |
           HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
       # - name: compile x86 mac
@@ -62,7 +59,7 @@ jobs:
           targetBranch: main
           changes: |
             {
-            	"$.spec.platforms.0.sha256": "${{ steps.checksum1.outputs.hash }}",
+            	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
               "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}",
               "$.spec.version": "v${{github.ref_name}}"
             }
