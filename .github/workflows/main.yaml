@@ -60,6 +60,6 @@ jobs:
           changes: |
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
-              "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}",
+              "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}/kubectl-infra-m1mac.zip",
               "$.spec.version": "v${{github.ref_name}}"
             }
