@@ -39,6 +39,10 @@ jobs:
       #     zip kubectl-infra-windows.zip kubectl-infra.exe
       - name: Generate Release Hashes
         uses: MCJack123/ghaction-Generate-Release-Hashes@v4
+        with:
+          hash-type: sha1
+          file-name: hashes.txt
+
 
       # - name: krew release bot
       #   uses: rajatjindal/krew-release-bot@v0.0.43
