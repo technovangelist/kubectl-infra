@@ -25,6 +25,11 @@ jobs:
           zip kubectl-infra-m1mac.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
+      - name: Generate checksum for M1
+        id: checksumm1
+        run: |
+          HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
       # - name: compile x86 mac
       #   run: |
       #     deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
@@ -41,7 +46,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         id: releaseaction
         with:
-          # removeArtifacts: true
+          removeArtifacts: true
           # artifacts: "kubectl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
           artifacts: "kubectl-infra-m1mac.zip"
           bodyFile: "README.md"
@@ -54,8 +59,6 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: "krew.yaml"
-          propertyPath: "$.spec.platforms[0].sha256"
-          value: ${{ steps.compilem1.outputs.hash }}
           commitChange: true
           message: "Updated hash for releases"
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -64,7 +67,7 @@ jobs:
           targetBranch: main
           changes: |
             {
-            	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
+            	"$.spec.platforms.0.sha256": "${{ steps.checksum1.outputs.hash }}",
               "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}",
               "$.spec.version": "v${{github.ref_name}}"
             }
