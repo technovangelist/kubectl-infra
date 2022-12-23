@@ -50,10 +50,6 @@ jobs:
           artifacts: "kubectl-infra-m1mac.zip"
           bodyFile: "README.md"
 
-      - uses: MCJack123/ghaction-generate-release-hashes@v3
-        with:
-          hash-type: sha256
-          file-name: hashes.txt
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
