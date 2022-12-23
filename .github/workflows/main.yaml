@@ -26,22 +26,27 @@ jobs:
           zip kubectl-infra-m1mac.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
-          sha256sum --tag kubectl-infra-m1mac.zip
-          sha256sum kubectl-infra-m1mac.zip
-
-      # - name: compile x86 mac
-      #   run: |
-      #     deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
-      #     zip kubectl-infra-x86mac.zip kubectl-infra
-      # - name: compile linux
-      #   run: |
-      #     deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
-      #     zip kubectl-infra-linux.zip kubectl-infra
-      # - name: compile windows
-      #   run: |
-      #     deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
-      #     zip kubectl-infra-windows.zip kubectl-infra.exe
-
+      - name: compile x86 mac
+        id: compx86
+        run: |
+          deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          zip kubectl-infra-x86mac.zip kubectl-infra
+          HASH=$(sha256sum -b kubectl-infra-x86mac.zip | awk '{print $1}')
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
+      - name: compile linux
+        id: complinux
+        run: |
+          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          zip kubectl-infra-linux.zip kubectl-infra
+          HASH=$(sha256sum -b kubectl-infra-linux.zip | awk '{print $1}')
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
+      - name: compile windows
+        id: compwin
+        run: |
+          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          zip kubectl-infra-windows.zip kubectl-infra.exe
+          HASH=$(sha256sum -b kubectl-infra-windows.zip | awk '{print $1}')
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
       - uses: ncipollo/release-action@v1
         id: releaseaction
         with:
@@ -64,5 +69,11 @@ jobs:
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
               "$.spec.platforms.0.uri": "https://github.com/technovangelist/kubectl-infra/releases/download/${{github.ref_name}}/kubectl-infra-m1mac.zip",
+              "$.spec.platforms.1.sha256": "${{ steps.compx86.outputs.hash }}",
+              "$.spec.platforms.1.uri": "https://github.com/technovangelist/kubectl-infra/releases/download/${{github.ref_name}}/kubectl-infra-x86mac.zip",
+              "$.spec.platforms.2.sha256": "${{ steps.complinux.outputs.hash }}",
+              "$.spec.platforms.2.uri": "https://github.com/technovangelist/kubectl-infra/releases/download/${{github.ref_name}}/kubectl-infra-linux.zip",
+              "$.spec.platforms.3.sha256": "${{ steps.compwin.outputs.hash }}",
+              "$.spec.platforms.3.uri": "https://github.com/technovangelist/kubectl-infra/releases/download/${{github.ref_name}}/kubectl-infra-windows.zip",
               "$.spec.version": "v${{github.ref_name}}"
             }
