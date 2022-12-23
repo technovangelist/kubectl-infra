@@ -45,8 +45,11 @@ jobs:
           propertyPath: "$.spec.platforms[0].sha256"
           value: ${{ steps.compilem1.outputs.hash }}
           commitChange: true
+          message: "Updated hash for releases"
           token: ${{ secrets.GITHUB_TOKEN }}
           masterBranchName: main
+          branch: main
+          targetBranch: main
 
       # - name: krew release bot
       #   uses: rajatjindal/krew-release-bot@v0.0.43
