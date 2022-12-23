@@ -21,12 +21,13 @@ jobs:
       # - uses: cb80/delrel@latest
       #   with:
       #     tag: version
-      - name: compile-m1
+      - name: Compile for Mac M1
+        id: compilem1
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
           HASH=$(sha256sum kubectl-infra-m1mac.zip)
-          echo "::set-output name=hash::$HASH"
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
 
       # - name: compile x86 mac
       #   run: |
@@ -45,7 +46,7 @@ jobs:
         with:
           valueFile: "krew.yaml"
           propertyPath: "$.spec.platforms[0].sha256"
-          value: steps.compile-m1.outputs.hash
+          value: steps.compilem1.outputs.hash
           commitChange: true
           token: ${{ secrets.GITHUB_TOKEN }}
           masterBranchName: main
