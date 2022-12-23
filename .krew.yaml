@@ -14,4 +14,3 @@ spec:
         arch: arm64
     {{addURIAndSha "https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-m1mac.zip" }}
     bin: kubectl-infra
-  
