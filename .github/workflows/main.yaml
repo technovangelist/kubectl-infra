@@ -1,6 +1,8 @@
 name: build
 on:
   push:
+    tags:
+      - "v*.*.*"
     branches: [main]
   pull_request:
     branches: [main]
@@ -16,9 +18,9 @@ jobs:
         with:
           deno-version: v1.x
 
-      - uses: cb80/delrel@latest
-        with:
-          tag: latest
+      # - uses: cb80/delrel@latest
+      #   with:
+      #     tag: version
       - name: compile m1
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
