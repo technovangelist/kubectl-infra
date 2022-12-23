@@ -25,7 +25,9 @@ jobs:
         run: |
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
-          echo HASH=$(sha256sum kubectl-infra-m1mac.zip)
+          HASH=$(sha256sum kubectl-infra-m1mac.zip)
+          echo "::set-output name=hash::$HASH"
+
       # - name: compile x86 mac
       #   run: |
       #     deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
