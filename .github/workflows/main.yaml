@@ -55,5 +55,4 @@ jobs:
           removeArtifacts: true
           # artifacts: "kubectl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
           artifacts: "kubectl-infra-m1mac.zip"
-          tag: "latest"
           bodyFile: "README.md"
