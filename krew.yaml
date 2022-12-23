@@ -12,6 +12,6 @@ spec:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/tag/0.2.31
-      sha256: 133d92d5793cdbc1cd65c17e02b25fc9ca6d6177b9797b0a7811e98223153f9f
+      uri: https://github.com/technovangelist/kubectl-infra/releases/tag/0.2.31/kubectl-infra-m1mac.zip
+      sha256: "133d92d5793cdbc1cd65c17e02b25fc9ca6d6177b9797b0a7811e98223153f9f"
       bin: kubectl-infra
