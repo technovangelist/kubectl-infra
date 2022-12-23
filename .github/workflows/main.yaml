@@ -29,21 +29,21 @@ jobs:
       - name: compile x86 mac
         id: compx86
         run: |
-          deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-run --allow-read --allow-write --allow-net mod.ts
           zip kubectl-infra-x86mac.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-x86mac.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
       - name: compile linux
         id: complinux
         run: |
-          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          deno compile --target x86_64-unknown-linux-gnu --output kubectl-infra --allow-run --allow-read --allow-write --allow-net mod.ts
           zip kubectl-infra-linux.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-linux.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
       - name: compile windows
         id: compwin
         run: |
-          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
+          deno compile --target x86_64-pc-windows-msvc --output kubectl-infra --allow-run --allow-read --allow-write --allow-net mod.ts
           zip kubectl-infra-windows.zip kubectl-infra.exe
           HASH=$(sha256sum -b kubectl-infra-windows.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
@@ -63,8 +63,8 @@ jobs:
           message: "Updated hash for releases."
           token: ${{ secrets.GITHUB_TOKEN }}
           masterBranchName: main
-          branch: main
-          targetBranch: main
+          # branch: main
+          # targetBranch: main
           changes: |
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
