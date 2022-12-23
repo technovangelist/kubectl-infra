@@ -20,7 +20,7 @@ spec:
           os: darwin
           arch: amd64
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac.zip
-      sha256: xxxtt
+      sha256: xxxttasht
       bin: kubectl-infra
     - selector:
         matchLabels:
