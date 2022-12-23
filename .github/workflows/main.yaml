@@ -28,7 +28,7 @@ jobs:
           echo "hash=$HASH" >> $GITHUB_OUTPUT
           sha256sum --tag kubectl-infra-m1mac.zip
           sha256sum kubectl-infra-m1mac.zip
-          
+
       # - name: compile x86 mac
       #   run: |
       #     deno compile --target x86_64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts
@@ -63,6 +63,6 @@ jobs:
           changes: |
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
-              "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}/kubectl-infra-m1mac.zip",
+              "$.spec.platforms.0.uri": "https://github.com/technovangelist/kubectl-infra/releases/download/${{github.ref_name}}/kubectl-infra-m1mac.zip",
               "$.spec.version": "v${{github.ref_name}}"
             }
