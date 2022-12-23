@@ -45,6 +45,8 @@ jobs:
           propertyPath: '$.spec.platforms[0].sha256'
           value: steps.compile-m1.outputs.hash
           createPR: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
 
 
       # - name: krew release bot
