@@ -62,5 +62,5 @@ jobs:
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
               "$.spec.platforms.0.uri": "${{ steps.releaseaction.outputs.html_url }}",
-              "$.spec.version": "${{github.ref_name}}"
+              "$.spec.version": "v${{github.ref_name}}"
             }
