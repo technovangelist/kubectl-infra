@@ -24,7 +24,7 @@ jobs:
           rm kubectl-infra-m1mac.zip
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
-          HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
+          HASH=$(sha256sum -b --tag kubectl-infra-m1mac.zip | awk '{print $1}')
           echo "hash=$HASH" >> $GITHUB_OUTPUT
       # - name: compile x86 mac
       #   run: |
