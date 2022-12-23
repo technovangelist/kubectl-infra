@@ -3,7 +3,7 @@ kind: Plugin
 metadata:
   name: grants
 spec:
-  version: v0.2.44
+  version: v0.2.45
   homepage: https://GitHub.com/technovangelist/kubectl-infra
   shortDescription: Grant access to k8s
   description: Grant access to kubernetes with Infra.. Also search for users, roles, and groups.
@@ -12,6 +12,6 @@ spec:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/tag/0.2.44/kubectl-infra-m1mac.zip
-      sha256: a344478da3d64359730fe3b62095e1c01d9182b829134ae4e161697cfebc96ed
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.45/kubectl-infra-m1mac.zip
+      sha256: ab427f7a851da552cd1274ab9b467b8c7f3f3078f915bb51755bd051dbca68a5
       bin: kubectl-infra
