@@ -13,7 +13,7 @@ spec:
           os: darwin
           arch: arm64
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-m1mac.zip
-      sha256: 0ce1e0ef1f2a471c4f67709f02e2b38376fdc0edaa777843e3ce96669bc9fb93  kubectl-infra-m1mac.zip
+      sha256: 851f428af91934eca4c41551e41cf22dc5f34e7719d2f1b088a704257c00cfdc
       bin: kubectl-infra
     - selector:
         matchLabels:
