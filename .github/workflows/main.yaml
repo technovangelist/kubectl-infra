@@ -43,7 +43,7 @@ jobs:
         with:
           valueFile: 'krew.yaml'
           propertyPath: '$.spec.platforms[0].sha256'
-          value: steps.compile1.outputs.hash
+          value: steps.compile-m1.outputs.hash
           commitChange: true
 
 
