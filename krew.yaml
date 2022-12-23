@@ -15,24 +15,4 @@ spec:
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-m1mac.zip
       sha256: 851f428af91934eca4c41551e41cf22dc5f34e7719d2f1b088a704257c00cfdc
       bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: darwin
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac.zip
-      sha256: xxxttashtasht
-      bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: linux
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-linux.zip
-      sha256: xxx
-      bin: kubectl-infra
-    - selector:
-        matchLabels:
-          os: windows
-          arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-windows.zip
-      sha256: xxx
-      bin: kubectl-infra.exe
+
