@@ -20,16 +20,19 @@ spec:
           os: darwin
           arch: amd64
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-x86mac.zip
+      sha256: xxx
       bin: kubectl-infra
     - selector:
         matchLabels:
           os: linux
           arch: amd64
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-linux.zip
+      sha256: xxx
       bin: kubectl-infra
     - selector:
         matchLabels:
           os: windows
           arch: amd64
       uri: https://github.com/technovangelist/kubectl-infra/releases/download/latest/kubectl-infra-windows.zip
+      sha256: xxx
       bin: kubectl-infra.exe
