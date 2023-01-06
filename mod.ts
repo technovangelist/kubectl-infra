@@ -1,5 +1,6 @@
 import {
   addGroupGrant,
+  addUserGroup,
   addUserGrant,
   searchAllUsers,
   searchGroup,
@@ -16,16 +17,21 @@ new Command()
   .option("-g, --group <group:string>", "group name")
   .action(async ({ user = "", group = "", role = "" }) => {
     let output = "";
+    const hasuser = user.length > 0;
+    const hasrole = role.length > 0;
+    const hasgroup = group.length > 0
     if (await validateAccess()) {
-      if (user.length > 0 && role.length > 0) {
+      if (hasuser && hasrole) {
         output = await addUserGrant(user, role);
-      } else if (group.length > 0 && role.length > 0) {
+      } else if (hasuser && hasgroup) {
+        output = await addUserGroup(user, group);
+      } else if (hasgroup && hasrole) {
         output = await addGroupGrant(group, role);
-      } else if (user.length > 0) {
+      } else if (hasuser) {
         output = await searchUser(user);
-      } else if (role.length > 0) {
+      } else if (hasrole) {
         output = searchRole(role);
-      } else if (group.length > 0) {
+      } else if (hasgroup) {
         output = await searchGroup(group);
       } else {
         searchAllUsers();
