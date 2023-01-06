@@ -3,7 +3,7 @@ kind: Plugin
 metadata:
   name: grants
 spec:
-  version: v0.2.58
+  version: v0.2.59
   homepage: https://GitHub.com/technovangelist/kubectl-infra
   shortDescription: Grant access to k8s
   description: Grant access to kubernetes with Infra.. Also search for users, roles, and groups.
@@ -12,27 +12,27 @@ spec:
         matchLabels:
           os: darwin
           arch: arm64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.58/kubectl-infra-m1mac.zip
-      sha256: d681b45f53bebca3ddba96fada9eb7a0f73331b691164fc3be6dedc5129a8955
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.59/kubectl-infra-m1mac.zip
+      sha256: e0abaef44db17c0fddb49c983cc09f6facbba507cbd433a0ba628095c37b1e5d
       bin: kubectl-infra
     - selector: null
       matchLabels:
         os: darwin
         arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.58/kubectl-infra-x86mac.zip
-      sha256: d1e4a1d0b8f2f1de6b0aa87b80b372cbbb8128852e1e2a69298d27090ff9a889
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.59/kubectl-infra-x86mac.zip
+      sha256: aa063fa4155f4301036a3d603a722dc96fe5055e307b5d4c41f53cde6852cf4a
       bin: kubectl-infra
     - selector: null
       matchLabels:
         os: linux
         arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.58/kubectl-infra-linux.zip
-      sha256: 36a13d2467b474aeb453aa77861dde8b2646d36d2b634c1ef846d38564449941
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.59/kubectl-infra-linux.zip
+      sha256: ba3d3dd01e9f9341e0e7c17a4254f72a702273c19593c7bfc98d5f0d202d4997
       bin: kubectl-infra
     - selector: null
       matchLabels:
         os: windows
         arch: amd64
-      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.58/kubectl-infra-windows.zip
-      sha256: a229c53614e20cfc7212a817e89ed0e92ca8c777329f0b7ea993509cf3682e3c
+      uri: https://github.com/technovangelist/kubectl-infra/releases/download/0.2.59/kubectl-infra-windows.zip
+      sha256: 5ec60fa4f5d6c0f48495b97fc910f2d61330c585ed66557ba160299d561976e7
       bin: kubectl-infra.exe
