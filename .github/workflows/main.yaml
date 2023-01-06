@@ -54,8 +54,7 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: "krew.yaml"
-          commitChange: true
-          updateFile: true
+          createPR: true
           message: "Updated hash for releases."
           token: ${{ secrets.GITHUB_TOKEN }}
           masterBranchName: main
