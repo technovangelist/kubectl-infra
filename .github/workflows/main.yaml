@@ -50,7 +50,7 @@ jobs:
           artifacts: "kubectl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
           # artifacts: "kubectl-infra-m1mac.zip"
           bodyFile: "README.md"
-      - name: Update values.yaml
+      - name: Update krew.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: "krew.yaml"
