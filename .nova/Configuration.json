@@ -1,0 +1,14 @@
+{
+  "apexskier.eslint.config.fixOnSave" : "Disable",
+  "apexskier.typescript.config.formatDocumentOnSave" : "false",
+  "apexskier.typescript.config.isEnabledForJavascript" : "Disable",
+  "apexskier.typescript.config.organizeImportsOnSave" : "false",
+  "apexskier.typescript.config.userPreferences.disableSuggestions" : true,
+  "apexskier.typescript.config.userPreferences.includePackageJsonAutoImports" : "off",
+  "co.gwil.deno.config.enableLinting" : "true",
+  "co.gwil.deno.config.enableLsp" : "true",
+  "co.gwil.deno.config.enableUnstable" : "true",
+  "co.gwil.deno.config.formatOnSave" : "true",
+  "deno.unstable" : true,
+  "editor.default_syntax" : "typescript"
+}

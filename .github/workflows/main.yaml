@@ -1,4 +1,4 @@
-name: build
+name: release
 on:
   push:
     tags:
@@ -15,13 +15,9 @@ jobs:
         with:
           deno-version: v1.x
 
-      # - uses: cb80/delrel@latest
-      #   with:
-      #     tag: version
       - name: Compile for Mac M1
         id: compilem1
         run: |
-          # rm kubectl-infra-m1mac.zip
           deno compile --target aarch64-apple-darwin --output kubectl-infra --allow-run --allow-read --allow-write --allow-net mod.ts 
           zip kubectl-infra-m1mac.zip kubectl-infra
           HASH=$(sha256sum -b kubectl-infra-m1mac.zip | awk '{print $1}')
@@ -54,7 +50,6 @@ jobs:
           artifacts: "kubectl-infra-m1mac.zip,kubectl-infra-x86mac.zip,kubectl-infra-linux.zip,kubectl-infra-windows.zip"
           # artifacts: "kubectl-infra-m1mac.zip"
           bodyFile: "README.md"
-
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
