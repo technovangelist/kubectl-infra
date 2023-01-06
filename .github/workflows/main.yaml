@@ -54,13 +54,14 @@ jobs:
         uses: fjogeleit/yaml-update-action@main
         with:
           valueFile: "krew.yaml"
-          createPR: 'true'
+          commitChange: 'true'
           message: "Updated hash for releases."
           title: 'Update'
           token: ${{ secrets.GITHUB_TOKEN }}
-          masterBranchName: main
+          # masterBranchName: main
           branch: main
-          targetBranch: main
+          # targetBranch: main
+          noCompatMode: false
           changes: |
             {
             	"$.spec.platforms.0.sha256": "${{ steps.compilem1.outputs.hash }}",
